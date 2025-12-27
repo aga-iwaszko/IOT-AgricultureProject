@@ -1,3 +1,5 @@
+// Final tested IoT agricultural monitoring system 
+
 #include <WiFiS3.h> //Uses the built in Wifi 
 #include "ThingSpeak.h" //Sends data to ThingSpeak
 #include <DHT.h> // DHT sensor 
@@ -26,6 +28,7 @@ const int lightAnalogPin = A1;  // A0 -> A1
 const int lightDigitalPin = 3;  // D0 -> D3 
 
 // Relay / LEDs ('grow' light)  
+// Unfortnatley could not work, unsure of cause 
 const int GROW_LED_PIN = 7;   
 const int ledPin = LED_BUILTIN; //LED
 
@@ -111,7 +114,6 @@ void loop() {
    ThingSpeak.setField(5, lightRaw);    //Field 5:Light(Raw)
    ThingSpeak.setField(6, lightPercent); //Field 6: Light (%)     
    
-
   int code = ThingSpeak.writeFields(myChannelNumber, myWriteAPIKey);
 
   digitalWrite(LED_BUILTIN, LOW); //Turns LED after upload
@@ -122,3 +124,4 @@ void loop() {
 
   delay(20000); //Waits at leat 15 seconds before next upload
 }
+// Added comments
